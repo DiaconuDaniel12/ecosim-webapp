@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>EcoSim (ECO) — Solana Game Economy Token</title>
+  <meta name="description" content="EcoSim (ECO) is a Solana token for an economic game with daily rewards, Eco Points, and a reinvested game economy." />
+  <style>
+    :root{
+      --bg:#0b0f17;
+      --panel:#0f1624;
+      --panel2:#0d1320;
+      --text:#e9eef8;
+      --muted:#a9b4c7;
+      --line:rgba(255,255,255,.08);
+      /* “galben de Voroneț” – warm, saturated yellow */
+      --accent:#f2c10f;
+      --accent2:#ffd65a;
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background:
+        radial-gradient(1200px 700px at 15% 0%, rgba(242,193,15,.14), transparent 60%),
+        radial-gradient(900px 600px at 85% 10%, rgba(242,193,15,.08), transparent 55%),
+        linear-gradient(180deg, var(--bg), #070a10 75%);
+      color:var(--text);
+      overflow-x:hidden;
+    }
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1120px;margin:0 auto;padding:0 18px}
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,15,23,.55);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:14px;
+    }
+    .brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.3px}
+    .logo{
+      width:34px;height:34px;border-radius:12px;
+      background: radial-gradient(circle at 30% 30%, var(--accent2), var(--accent));
+      box-shadow: 0 10px 28px rgba(242,193,15,.25);
+      border:1px solid rgba(255,214,90,.35);
+    }
+    .navlinks{display:flex; gap:16px; align-items:center; flex-wrap:wrap}
+    .navlinks a{font-size:14px;color:var(--muted)}
+    .navlinks a:hover{color:var(--text)}
+    .ctaRow{display:flex; gap:10px; align-items:center}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:14px;
+      font-weight:700;
+      font-size:14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color:var(--text);
+      transition: transform .12s ease, border-color .12s ease, background .12s ease;
+      cursor:pointer;
+      user-select:none;
+      white-space:nowrap;
+    }
+    .btn:hover{transform: translateY(-1px); border-color: rgba(242,193,15,.35)}
+    .btn.primary{
+      background: linear-gradient(180deg, rgba(242,193,15,.95), rgba(242,193,15,.78));
+      color:#121212;
+      border-color: rgba(242,193,15,.65);
+      box-shadow: 0 18px 45px rgba(242,193,15,.16);
+    }
+    .btn.primary:hover{border-color: rgba(255,214,90,.95)}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      border:1px solid rgba(242,193,15,.25);
+      background: rgba(242,193,15,.08);
+      color: var(--accent2);
+      padding:7px 11px;
+      border-radius:999px;
+      font-size:13px;
+      font-weight:700;
+    }
+    .hero{padding:46px 0 22px}
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    @media (max-width: 920px){
+      .heroGrid{grid-template-columns:1fr}
+      .navlinks{display:none}
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .heroCard{padding:26px}
+    h1{margin:12px 0 10px; font-size:44px; line-height:1.05; letter-spacing:-.6px}
+    @media (max-width: 520px){ h1{font-size:36px} }
+    .sub{color:var(--muted); font-size:16px; line-height:1.55; max-width:60ch}
+    .heroButtons{margin-top:18px; display:flex; flex-wrap:wrap; gap:10px}
+    .metaRow{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin-top:16px; color:var(--muted); font-size:13px
+    }
+    .metaChip{
+      display:inline-flex; gap:8px; align-items:center;
+      padding:8px 10px; border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.02);
+    }
+    .aside{padding:18px}
+    .aside h3{margin:0 0 12px; font-size:16px}
+    .kv{display:grid; grid-template-columns: 1fr; gap:10px}
+    .kvRow{
+      padding:12px;
+      border-radius: 14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.02);
+    }
+    .k{color:var(--muted); font-size:12px}
+    .v{font-weight:800; margin-top:4px}
+    .small{color:var(--muted); font-size:12px; line-height:1.5}
+    section{padding:22px 0}
+    .sectionTitle{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:14px;
+      margin-bottom:12px;
+    }
+    .sectionTitle h2{margin:0; font-size:22px; letter-spacing:-.2px}
+    .sectionTitle p{margin:0;color:var(--muted); font-size:13px}
+    .grid3{display:grid; grid-template-columns: repeat(3, 1fr); gap:12px}
+    .grid2{display:grid; grid-template-columns: repeat(2, 1fr); gap:12px}
+    @media (max-width: 920px){
+      .grid3{grid-template-columns:1fr}
+      .grid2{grid-template-columns:1fr}
+    }
+    .tile{padding:16px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.02)}
+    .tile h4{margin:0 0 8px}
+    .tile p{margin:0;color:var(--muted);line-height:1.55}
+    .badge{
+      display:inline-flex; align-items:center; justify-content:center;
+      width:30px;height:30px;border-radius:12px;
+      background: rgba(242,193,15,.12);
+      border:1px solid rgba(242,193,15,.25);
+      color: var(--accent2);
+      font-weight:900;
+      margin-bottom:10px;
+    }
+    .split{
+      display:grid; grid-template-columns: 1fr 1fr; gap:12px;
+    }
+    @media (max-width: 920px){ .split{grid-template-columns:1fr} }
+    .box{
+      padding:18px;
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(15,22,36,.85), rgba(13,19,32,.75));
+    }
+    .box h3{margin:0 0 8px}
+    .box p{margin:0;color:var(--muted);line-height:1.55}
+    .hr{height:1px;background:var(--line);margin:16px 0}
+    .list{margin:0;padding-left:18px;color:var(--muted);line-height:1.6}
+    .tokenLine{
+      display:flex; gap:10px; align-items:center; justify-content:space-between;
+      padding:12px 14px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.02);
+      flex-wrap:wrap;
+    }
+    .tokenLine code{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size:12px;
+      color: var(--accent2);
+      background: rgba(242,193,15,.08);
+      border:1px solid rgba(242,193,15,.2);
+      padding:6px 8px;
+      border-radius: 10px;
+      word-break:break-all;
+    }
+    .foot{
+      padding:26px 0 40px;
+      border-top:1px solid var(--line);
+      color: var(--muted);
+      font-size:12px;
+      line-height:1.6;
+    }
+    .foot .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .link{color:var(--accent2)}
+    .link:hover{text-decoration:underline}
+    .toast{
+      position: fixed; left: 50%; bottom: 16px; transform: translateX(-50%);
+      background: rgba(15,22,36,.92);
+      border:1px solid var(--line);
+      padding:10px 12px;
+      border-radius: 14px;
+      font-size:13px;
+      color: var(--text);
+      display:none;
+      z-index:99;
+      box-shadow: var(--shadow);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="container">
+      <div class="nav">
+        <div class="brand">
+          <div class="logo" aria-hidden="true"></div>
+          <div>EcoSim <span style="color:var(--accent2)">(ECO)</span></div>
+        </div>
+
+        <div class="navlinks" aria-label="Site navigation">
+          <a href="#how">How it works</a>
+          <a href="#economy">Economy</a>
+          <a href="#tokenomics">Tokenomics</a>
+          <a href="#roadmap">Roadmap</a>
+          <a href="#faq">FAQ</a>
+        </div>
+
+        <div class="ctaRow">
+          <a class="btn" href="#tokenomics">Read tokenomics</a>
+          <a class="btn primary" href="#community">Community</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="container">
+      <div class="heroGrid">
+        <div class="card heroCard">
+          <span class="pill">Solana • Game economy • Daily rewards</span>
+          <h1>EcoSim (ECO)<br/>a daily-reward economy game token</h1>
+          <p class="sub">
+            EcoSim is an economic game ecosystem powered by <b>ECO</b> on Solana, plus <b>Eco Points</b> inside the game
+            for items and upgrades. Collect Daily Gifts, earn rewards, and progress through a growing economy.
+          </p>
+
+          <div class="heroButtons">
+            <a class="btn primary" href="#how">See how it works</a>
+            <a class="btn" href="#economy">Reinvestment model</a>
+            <a class="btn" href="#community">Add socials later</a>
+          </div>
+
+          <div class="metaRow">
+            <div class="metaChip">✅ Chain: <b>Solana</b></div>
+            <div class="metaChip">✅ Supply: <b>1,000,000,000 ECO</b></div>
+            <div class="metaChip">⚠️ Launch: <b>TBD</b></div>
+          </div>
+        </div>
+
+        <aside class="card aside">
+          <h3>Quick facts</h3>
+          <div class="kv">
+            <div class="kvRow">
+              <div class="k">Token</div>
+              <div class="v">ECO (on-chain)</div>
+              <div class="small">Rewards + utility across EcoSim.</div>
+            </div>
+            <div class="kvRow">
+              <div class="k">In-game currency</div>
+              <div class="v">Eco Points</div>
+              <div class="small">Used for items, upgrades, progression.</div>
+            </div>
+            <div class="kvRow">
+              <div class="k">Daily system</div>
+              <div class="v">Daily Gifts</div>
+              <div class="small">Daily gifts + points to support retention and progression.</div>
+            </div>
+          </div>
+          <div class="hr"></div>
+          <div class="small">
+            Tip: add your links later (Telegram / X / Discord) by replacing the placeholders in the “Community” section.
+          </div>
+        </aside>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="how">
+      <div class="container">
+        <div class="sectionTitle">
+          <h2>How it works</h2>
+          <p>Simple loop: collect → earn → upgrade</p>
+        </div>
+
+        <div class="grid3">
+          <div class="tile">
+            <div class="badge">1</div>
+            <h4>Collect Daily Gifts</h4>
+            <p>Daily Gifts appear in-game. Collect them to drive daily progression and rewards.</p>
+          </div>
+          <div class="tile">
+            <div class="badge">2</div>
+            <h4>Earn rewards</h4>
+            <p>Rewards connect to the EcoSim economy. ECO is the on-chain token; Eco Points are the in-game currency.</p>
+          </div>
+          <div class="tile">
+            <div class="badge">3</div>
+            <h4>Reinvest & upgrade</h4>
+            <p>Use Eco Points for items and upgrades. The ecosystem revenue helps fund game growth and improvements.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="economy">
+      <div class="container">
+        <div class="sectionTitle">
+          <h2>ECO vs Eco Points</h2>
+          <p>Two layers, one economy</p>
+        </div>
+
+        <div class="split">
+          <div class="box">
+            <h3><span style="color:var(--accent2)">ECO</span> (Solana token)</h3>
+            <p>
+              ECO is the on-chain token powering the EcoSim ecosystem. It’s designed for rewards and utility across the project.
+              Trading and deeper on-chain features can be added as the game evolves.
+            </p>
+            <div class="hr"></div>
+            <ul class="list">
+              <li>On-chain token (Solana)</li>
+              <li>Rewards & ecosystem utility</li>
+              <li>Future integrations (marketplace, on-chain items)</li>
+            </ul>
+          </div>
+
+          <div class="box">
+            <h3><span style="color:var(--accent2)">Eco Points</span> (in-game currency)</h3>
+            <p>
+              Eco Points are used inside the game for items, upgrades, and progression—fast and frictionless.
+              Eco Points are designed for gameplay balance, not speculation.
+            </p>
+            <div class="hr"></div>
+            <ul class="list">
+              <li>In-game currency</li>
+              <li>Items, upgrades, progression</li>
+              <li>Balance & gameplay-first design</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="hr"></div>
+
+        <div class="box">
+          <h3>Reinvestment model</h3>
+          <p>
+            EcoSim’s ecosystem revenue is reinvested into growing the game: development, new content, infrastructure,
+            security, marketing, and operations (including salaries). The priority is improving the player experience and the in-game economy.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="tokenomics">
+      <div class="container">
+        <div class="sectionTitle">
+          <h2>Tokenomics</h2>
+          <p>Supply is fixed — distribution can be finalized later</p>
+        </div>
+
+        <div class="grid2">
+          <div class="box">
+            <h3>Core numbers</h3>
+            <div class="hr"></div>
+            <div class="tokenLine">
+              <div><b>Total supply</b></div>
+              <div><code>1,000,000,000 ECO</code></div>
+            </div>
+            <div class="tokenLine" style="margin-top:10px">
+              <div><b>Contract address</b> <span style="color:var(--muted)">(placeholder)</span></div>
+              <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+                <code id="contract">TBD_AFTER_DEPLOY</code>
+                <button class="btn" onclick="copyContract()">Copy</button>
+              </div>
+            </div>
+            <div class="small" style="margin-top:12px">
+              After deployment, replace <span style="color:var(--accent2)">TBD_AFTER_DEPLOY</span> with the real Solana mint address.
+            </div>
+          </div>
+
+          <div class="box">
+            <h3>Distribution (edit later)</h3>
+            <p class="small" style="margin-top:6px">
+              Put real percentages here when you finalize. Keep it transparent. Example categories:
+            </p>
+            <div class="hr"></div>
+            <ul class="list">
+              <li><b>Rewards</b> — TBD%</li>
+              <li><b>Liquidity</b> — TBD%</li>
+              <li><b>Treasury</b> — TBD%</li>
+              <li><b>Team</b> — TBD% (with vesting)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="roadmap">
+      <div class="container">
+        <div class="sectionTitle">
+          <h2>Roadmap</h2>
+          <p>Short, realistic milestones</p>
+        </div>
+
+        <div class="grid3">
+          <div class="tile">
+            <h4>MVP game economy</h4>
+            <p>Daily Gifts + Eco Points, core progression, and stable gameplay loop.</p>
+          </div>
+          <div class="tile">
+            <h4>ECO token launch</h4>
+            <p>Finalize tokenomics, deploy mint, publish links, and integrate basic utility.</p>
+          </div>
+          <div class="tile">
+            <h4>Marketplace & on-chain items</h4>
+            <p>Introduce item trading and deeper integrations as the game scales.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container">
+        <div class="sectionTitle">
+          <h2>FAQ</h2>
+          <p>Clear answers = trust</p>
+        </div>
+
+        <div class="grid2">
+          <div class="box">
+            <h3>What is ECO?</h3>
+            <p>ECO is the on-chain Solana token for the EcoSim ecosystem, designed for rewards and utility.</p>
+            <div class="hr"></div>
+            <h3>What are Eco Points?</h3>
+            <p>Eco Points are the in-game currency used for items, upgrades, and progression.</p>
+          </div>
+
+          <div class="box">
+            <h3>What are Daily Gifts?</h3>
+            <p>Daily Gifts are in-game daily rewards that help drive retention and progression within the game economy.</p>
+            <div class="hr"></div>
+            <h3>Is this financial advice?</h3>
+            <p>No. This site is informational only and does not constitute investment advice.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="community">
+      <div class="container">
+        <div class="sectionTitle">
+          <h2>Community</h2>
+          <p>Add links later (placeholders for now)</p>
+        </div>
+
+        <div class="grid3">
+          <div class="tile">
+            <h4>Telegram</h4>
+            <p><a class="link" href="#" onclick="return false;">TBD</a></p>
+          </div>
+          <div class="tile">
+            <h4>X (Twitter)</h4>
+            <p><a class="link" href="#" onclick="return false;">TBD</a></p>
+          </div>
+          <div class="tile">
+            <h4>Docs</h4>
+            <p><a class="link" href="#" onclick="return false;">TBD</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <div class="container">
+        <div class="row">
+          <div><b>EcoSim (ECO)</b> — Solana game economy</div>
+          <div>© <span id="year"></span> EcoSim. All rights reserved.</div>
+        </div>
+        <div class="hr"></div>
+        <div>
+          <b>Disclaimer:</b> This website is for informational purposes only and does not constitute financial advice.
+          Crypto assets are volatile. Do your own research.
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <div class="toast" id="toast">Copied.</div>
+
+  <script>
+    // year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // copy contract helper
+    function copyContract() {
+      const txt = document.getElementById("contract").textContent.trim();
+      if (!txt || txt === "TBD_AFTER_DEPLOY") {
+        showToast("Contract not set yet.");
+        return;
+      }
+      navigator.clipboard?.writeText(txt).then(
+        () => showToast("Contract copied."),
+        () => showToast("Copy failed.")
+      );
+    }
+
+    function showToast(msg){
+      const el = document.getElementById("toast");
+      el.textContent = msg;
+      el.style.display = "block";
+      clearTimeout(window.__t);
+      window.__t = setTimeout(() => el.style.display = "none", 1400);
+    }
+
+    // smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener("click", (e)=>{
+        const id = a.getAttribute("href");
+        if (!id || id === "#") return;
+        const target = document.querySelector(id);
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({behavior:"smooth", block:"start"});
+      });
+    });
+  </script>
+</body>
+</html>
