@@ -1,262 +1,643 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>EcoSim — Cinematic One-Pager</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EcoSim — Token, Economy & Roadmap</title>
+  <meta name="description" content="EcoSim: a living on-chain economy with craft, rent, merge-to-upgrade workers and buildings, and a sustainable token model." />
+  <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
-  <div class="page">
-    <nav class="sidenav">
-      <div class="logo" aria-hidden="true"></div>
-      <a class="navitem" href="#token" data-target="token">
-        <svg fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7l9 5 9-5-9-5Zm0 18V7M3 12l9 5 9-5"/></svg>
-        <span>Token</span>
-      </a>
-      <a class="navitem" href="#economy" data-target="economy">
-        <svg fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16M6 20V8l5-3 7 4v11M6 12l5 3 7-4"/></svg>
-        <span>Economy</span>
-      </a>
-      <a class="navitem" href="#assets" data-target="assets">
-        <svg fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16v12H4z"/><path d="M9 10h6M9 14h6"/></svg>
-        <span>Assets</span>
-      </a>
-      <a class="navitem" href="#market" data-target="market">
-        <svg fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16l-1 10H5L4 6Z"/><path d="M9 10h6"/><path d="M10 16v2m4-2v2"/></svg>
-        <span>Market</span>
-      </a>
-      <a class="navitem" href="#roadmap" data-target="roadmap">
-        <svg fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6h7v4H6zM11 14h7v4h-7z"/><path d="M9 10v4m4-4v4"/></svg>
-        <span>Roadmap</span>
-      </a>
-      <a class="navitem" href="#events" data-target="events">
-        <svg fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 5V3m12 2V3M4 8h16M5 6h14a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Z"/><path d="M9 12h2m3 0h2m-7 4h2m3 0h2"/></svg>
-        <span>Events</span>
-      </a>
-      <a class="navitem" href="#faq" data-target="faq">
-        <svg fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6m-3-3v3"/><circle cx="12" cy="9" r="4"/></svg>
-        <span>FAQ</span>
-      </a>
-    </nav>
+  <!-- Ambient background layers -->
+  <div class="bg">
+    <div class="bg-grain"></div>
+    <div class="bg-glow a"></div>
+    <div class="bg-glow b"></div>
+    <div class="bg-glow c"></div>
+  </div>
 
-    <main class="content">
+  <!-- Top strip -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="brand-mark">ECO</div>
+        <div class="brand-text">
+          <div class="brand-title">EcoSim</div>
+          <div class="brand-sub">Game Economy • NFT Utility • Tokenomics</div>
+        </div>
+      </div>
 
-      <section id="token">
-        <div class="bg"></div><div class="paper-top"></div><div class="paper-bottom"></div>
-        <div class="panel">
-          <h1 class="accent">ECO Token</h1>
-          <p>ECO este tokenul de utilitate al EcoSim. Alimentează progresul, recompensele și viitoarele funcționalități on-chain. Sinks și utility sunt gândite pentru a menține circulația sănătoasă, în timp ce on-chain-ul va veni în fazele următoare.</p>
-          <div class="chips">
-            <span class="chip">Utility</span>
-            <span class="chip">Sinks & Upgrades</span>
-            <span class="chip">On-chain Later</span>
+      <div class="topbar-actions">
+        <a class="pill ghost" href="#play">Play Beta</a>
+        <button class="pill primary" id="buyBtnTop">Buy ECO</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sidebar navigation -->
+  <aside class="side">
+    <div class="side-inner">
+      <div class="side-group">
+        <button class="side-item active" data-target="top">
+          <span class="ico">🏠</span><span>Top</span>
+        </button>
+        <button class="side-item" data-target="features">
+          <span class="ico">🧩</span><span>Game Features</span>
+        </button>
+        <button class="side-item" data-target="economy">
+          <span class="ico">🏛️</span><span>Decentralized Economy</span>
+        </button>
+        <button class="side-item" data-target="craft">
+          <span class="ico">🛠️</span><span>Crafting & Production</span>
+        </button>
+        <button class="side-item" data-target="merge">
+          <span class="ico">⭐</span><span>Merge / Upgrade</span>
+        </button>
+        <button class="side-item" data-target="token">
+          <span class="ico">🪙</span><span>ECO Token</span>
+        </button>
+        <button class="side-item" data-target="roadmap">
+          <span class="ico">🗺️</span><span>Roadmap</span>
+        </button>
+        <button class="side-item" data-target="faq">
+          <span class="ico">❓</span><span>FAQ</span>
+        </button>
+      </div>
+
+      <div class="side-footer">
+        <div class="mini">
+          <div class="mini-title">Build</div>
+          <div class="mini-value">Beta 0.1</div>
+        </div>
+        <div class="mini">
+          <div class="mini-title">Network</div>
+          <div class="mini-value">Solana (planned)</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+    <!-- HERO -->
+    <section id="top" class="section hero">
+      <div class="hero-card">
+        <div class="hero-badge">
+          <span class="dot"></span> Live Economy Prototype • Daily Gifts • Mobile First
+        </div>
+
+        <h1 class="hero-title">
+          Build a city.<br/>
+          Run an economy.<br/>
+          Own the assets.
+        </h1>
+
+        <p class="hero-text">
+          EcoSim is a top-down/2.5D economy game where <b>workers</b> and <b>buildings</b> level up, merge into higher star tiers,
+          and power a real production loop. Items can be traded in-game, then later exported on-chain.
+        </p>
+
+        <div class="hero-cta">
+          <button class="btn primary" id="buyBtnHero">Buy ECO</button>
+          <a class="btn" href="#roadmap">See Roadmap</a>
+          <a class="btn ghost" href="#token">Tokenomics</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-k">Core Loop</div>
+            <div class="stat-v">Place → Produce → Trade → Upgrade</div>
           </div>
-          <div class="grid two">
-            <div class="card">
-              <h3>Utilitate</h3>
-              <p>Acces la conținut premium, boost-uri temporare, participare la evenimente speciale.</p>
+          <div class="stat">
+            <div class="stat-k">Assets</div>
+            <div class="stat-v">Buildings • Workers • Items</div>
+          </div>
+          <div class="stat">
+            <div class="stat-k">Progression</div>
+            <div class="stat-v">Level 1–30 → Fusion → Stars</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="paper">
+          <div class="paper-top">“A living economy where players set the prices.”</div>
+          <div class="paper-body">
+            <div class="kpi">
+              <div class="kpi-num">1B</div>
+              <div class="kpi-label">Total ECO Supply</div>
             </div>
-            <div class="card">
-              <h3>Sinks</h3>
-              <p>Upgrade-uri de clădiri, fuziuni de assets, consumabile pentru economii locale.</p>
+            <div class="kpi">
+              <div class="kpi-num">30</div>
+              <div class="kpi-label">Max Level per Worker/Building</div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-num">★</div>
+              <div class="kpi-label">Star Tiers from Fusion</div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="bullet">
+              <span>•</span>
+              <div>
+                <b>Market</b> sells buildings, workers and items.
+                Higher tier assets need matching star workers.
+              </div>
+            </div>
+            <div class="bullet">
+              <span>•</span>
+              <div>
+                <b>Talents</b> are discoverable (paid reveal) and boost specific production chains.
+              </div>
+            </div>
+            <div class="bullet">
+              <span>•</span>
+              <div>
+                Fusion reduces total NFT supply over time → stronger scarcity.
+              </div>
             </div>
           </div>
         </div>
-        <div class="visual">
-          <div class="orb"></div>
-          <div class="frame">
-            <h3>On-Chain mai târziu</h3>
-            <p class="meta">ECO va fi folosit on-chain pentru guvernanță și trading de assets tokenizați, după stabilizarea economiei in-game.</p>
-            <ul class="list">
-              <li>Utilitate in-game live</li>
-              <li>Tokenizare assets după balansare</li>
-              <li>Taxe/sinks pentru sănătatea economică</li>
+      </div>
+    </section>
+
+    <!-- FEATURES + SLIDER -->
+    <section id="features" class="section">
+      <div class="section-head">
+        <h2>Game Features</h2>
+        <p>Economy gameplay first — Web3 comes after the core loop is fun.</p>
+      </div>
+
+      <div class="grid3">
+        <div class="card">
+          <div class="card-title">Production Chains</div>
+          <div class="card-text">
+            Turn raw resources into crafted goods. Assign workers to buildings, boost output with talents, and scale with higher-star upgrades.
+          </div>
+          <div class="tagrow">
+            <span class="tag">Idle / Tick</span><span class="tag">Factories</span><span class="tag">Bonuses</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Player-Owned Assets</div>
+          <div class="card-text">
+            Buildings, workers, and items live in your inventory (“bag”). Place them on the map or trade them. Later: export on-chain as NFTs.
+          </div>
+          <div class="tagrow">
+            <span class="tag">Inventory</span><span class="tag">Trading</span><span class="tag">Withdraw</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Merge-to-Upgrade</div>
+          <div class="card-text">
+            Two level-30 assets fuse into one higher star tier. Higher tiers unlock better efficiency and new buildings that require star matching.
+          </div>
+          <div class="tagrow">
+            <span class="tag">Level 30</span><span class="tag">Stars</span><span class="tag">Supply Sink</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="slider">
+        <div class="slider-frame" id="sliderFrame">
+          <article class="slide is-active">
+            <h3>Trade, Rent, and Build a Reputation</h3>
+            <p>
+              List items on the market, set your own prices, rent buildings to new players, and build a brand. The best economies are social.
+            </p>
+            <div class="slide-metric">
+              <div class="meter"><span style="width:72%"></span></div>
+              <div class="meter-label">Market liquidity target</div>
+            </div>
+          </article>
+
+          <article class="slide">
+            <h3>Interior Maps & Specialized Production</h3>
+            <p>
+              Enter buildings to manage interior slots. Build specialized factories and assemble teams (Investor / Worker / Entrepreneur) for synergy.
+            </p>
+            <div class="slide-metric">
+              <div class="meter"><span style="width:55%"></span></div>
+              <div class="meter-label">Interior management complexity</div>
+            </div>
+          </article>
+
+          <article class="slide">
+            <h3>Daily Gifts & Events</h3>
+            <p>
+              Daily gifts, weekly quests, seasonal events, and limited recipes keep the economy moving without forcing pay-to-win.
+            </p>
+            <div class="slide-metric">
+              <div class="meter"><span style="width:62%"></span></div>
+              <div class="meter-label">Retention loops</div>
+            </div>
+          </article>
+
+          <article class="slide">
+            <h3>On-chain Trading (Later)</h3>
+            <p>
+              After the core game is stable: withdraw assets on-chain, trade them, then re-import into the game. Fusion permanently reduces total supply.
+            </p>
+            <div class="slide-metric">
+              <div class="meter"><span style="width:48%"></span></div>
+              <div class="meter-label">Web3 rollout stage</div>
+            </div>
+          </article>
+        </div>
+
+        <div class="slider-dots" id="sliderDots" aria-label="slider dots"></div>
+      </div>
+    </section>
+
+    <!-- ECONOMY -->
+    <section id="economy" class="section">
+      <div class="section-head">
+        <h2>Decentralized Economy</h2>
+        <p>Players set prices. Utility comes from gameplay demand, not hype.</p>
+      </div>
+
+      <div class="grid2">
+        <div class="card big">
+          <h3>NFT Utility (In-Game First)</h3>
+          <p>
+            Every asset has utility: workers produce, buildings host slots, items craft into higher value goods.
+            On-chain comes only after balance is proven.
+          </p>
+
+          <div class="list">
+            <div class="li"><span class="li-dot"></span><div><b>Rents:</b> rent buildings / gear for time-based fees.</div></div>
+            <div class="li"><span class="li-dot"></span><div><b>Buy/Sell:</b> list anything in the market; choose your price.</div></div>
+            <div class="li"><span class="li-dot"></span><div><b>Collateral Loans:</b> lock an asset to borrow in-game liquidity (optional later).</div></div>
+            <div class="li"><span class="li-dot"></span><div><b>Fusion sink:</b> merging reduces supply to keep late-game meaningful.</div></div>
+          </div>
+        </div>
+
+        <div class="card big">
+          <h3>Market Building</h3>
+          <p>
+            The Market is a permanent core building: buy buildings/workers, list player goods, and discover production opportunities.
+          </p>
+
+          <div class="mini-grid">
+            <div class="mini-card">
+              <div class="mini-k">Listings</div>
+              <div class="mini-v">Items • Workers • Buildings</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-k">Fees</div>
+              <div class="mini-v">Small trading tax (sink)</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-k">Discovery</div>
+              <div class="mini-v">Talent reveal + recipes</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-k">Stability</div>
+              <div class="mini-v">Anti-inflation sinks</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CRAFT -->
+    <section id="craft" class="section">
+      <div class="section-head">
+        <h2>Crafting & Production</h2>
+        <p>Make the economy feel “alive”: demand, supply, and meaningful upgrades.</p>
+      </div>
+
+      <div class="grid3">
+        <div class="card">
+          <div class="card-title">Gather</div>
+          <div class="card-text">
+            Collect resources from production buildings and timed events. Some resources are season-limited to create unique market spikes.
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Craft</div>
+          <div class="card-text">
+            Combine resources into equipment, consumables, building parts, and premium recipes. Higher tier crafting needs higher star workers.
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Ship</div>
+          <div class="card-text">
+            Deliver crafted goods to contracts (NPC) or sell to players. Contracts stabilize price floors so the economy doesn’t die.
+          </div>
+        </div>
+      </div>
+
+      <div class="card wide">
+        <h3>Example Loop (Simple but Addictive)</h3>
+        <div class="timeline">
+          <div class="step">
+            <div class="step-n">1</div>
+            <div class="step-b">
+              <div class="step-t">Place buildings</div>
+              <div class="step-d">Sawmill, Workshop, Market. Add worker slots.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-n">2</div>
+            <div class="step-b">
+              <div class="step-t">Assign workers</div>
+              <div class="step-d">Workers produce input resources. Talents boost specific chains.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-n">3</div>
+            <div class="step-b">
+              <div class="step-t">Craft goods</div>
+              <div class="step-d">Convert input to valuable output with recipes + bonuses.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-n">4</div>
+            <div class="step-b">
+              <div class="step-t">Sell / Reinvest</div>
+              <div class="step-d">Use profits to buy more slots, upgrade buildings, and fuse assets at level 30.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MERGE -->
+    <section id="merge" class="section">
+      <div class="section-head">
+        <h2>Merge / Upgrade System</h2>
+        <p>Progression that feels powerful — and also keeps supply under control.</p>
+      </div>
+
+      <div class="grid2">
+        <div class="card big">
+          <h3>Stars & Level Caps</h3>
+          <p>
+            Every worker and building levels from <b>1 → 30</b>.
+            At level 30, fuse two identical-tier assets to create a higher star asset.
+          </p>
+          <div class="list">
+            <div class="li"><span class="li-dot"></span><div><b>2× Level 30</b> → <b>1× Star +1</b> (supply decreases)</div></div>
+            <div class="li"><span class="li-dot"></span><div>Higher-star buildings require higher-star workers</div></div>
+            <div class="li"><span class="li-dot"></span><div>Star tiers unlock better slots, better efficiency, and new recipes</div></div>
+          </div>
+        </div>
+
+        <div class="card big">
+          <h3>Worker Types</h3>
+          <p>Different worker classes create strategy instead of “spam one unit”.</p>
+          <div class="mini-grid">
+            <div class="mini-card">
+              <div class="mini-k">Worker</div>
+              <div class="mini-v">Pure production / speed</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-k">Entrepreneur</div>
+              <div class="mini-v">Market margins / crafting yield</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-k">Investor</div>
+              <div class="mini-v">Scaling / slot expansion</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-k">Special Characters</div>
+              <div class="mini-v">Rare traits + unique perks</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOKEN -->
+    <section id="token" class="section">
+      <div class="section-head">
+        <h2>ECO Token</h2>
+        <p>Utility-driven token model designed for a game economy (not just speculation).</p>
+      </div>
+
+      <div class="grid2">
+        <div class="card big">
+          <h3>Supply & Utility</h3>
+          <p><b>Total supply:</b> 1,000,000,000 ECO (1B)</p>
+
+          <div class="list">
+            <div class="li"><span class="li-dot"></span><div><b>In-game purchases:</b> fees, cosmetics, optional accelerators.</div></div>
+            <div class="li"><span class="li-dot"></span><div><b>Market fees:</b> small taxes to reduce inflation (sink).</div></div>
+            <div class="li"><span class="li-dot"></span><div><b>Talent reveal:</b> pay ECO to discover worker talents (sink).</div></div>
+            <div class="li"><span class="li-dot"></span><div><b>Crafting boosts:</b> optional paid boosts (balanced).</div></div>
+          </div>
+
+          <div class="notice">
+            ⚠️ Token utility should always follow gameplay. Web3 launches only after the economy is stable.
+          </div>
+        </div>
+
+        <div class="card big">
+          <h3>Token Allocation (Example)</h3>
+
+          <div class="tokenomics">
+            <div class="donut" aria-label="tokenomics chart"></div>
+            <div class="token-legend">
+              <div class="leg"><span class="sw s1"></span><b>Community & Rewards</b> <span class="pct">35%</span></div>
+              <div class="leg"><span class="sw s2"></span><b>Liquidity</b> <span class="pct">10%</span></div>
+              <div class="leg"><span class="sw s3"></span><b>Team</b> <span class="pct">15%</span></div>
+              <div class="leg"><span class="sw s4"></span><b>Advisors</b> <span class="pct">5%</span></div>
+              <div class="leg"><span class="sw s5"></span><b>Marketing</b> <span class="pct">10%</span></div>
+              <div class="leg"><span class="sw s6"></span><b>Treasury</b> <span class="pct">20%</span></div>
+              <div class="leg"><span class="sw s7"></span><b>Seed/Private/Public</b> <span class="pct">5%</span></div>
+            </div>
+          </div>
+
+          <div class="vest">
+            <div class="vest-title">Vesting (Example)</div>
+            <ul>
+              <li><b>Seed:</b> cliff 3 months, vest 18 months</li>
+              <li><b>Private:</b> cliff 2 months, vest 12 months</li>
+              <li><b>Public:</b> small TGE, short vest 3–6 months</li>
+              <li><b>Team:</b> cliff 12 months, vest 36 months</li>
             </ul>
           </div>
         </div>
-      </section>
+      </div>
 
-      <section id="economy">
-        <div class="bg"></div><div class="paper-top"></div><div class="paper-bottom"></div>
-        <div class="panel">
-          <h2 class="accent">Decentralized Economy</h2>
-          <p>Orașele EcoSim sunt conduse de trei piloni: Commercial, Governor, Guild. Fiecare strat generează cerere, produce resurse și consumă ECO pentru upgrade.</p>
-          <div class="grid two">
-            <div class="card">
-              <h3>Commercial</h3>
-              <p>Magazine, ateliere, ferme. Produc resurse și bunuri, generează nevoi și cerere.</p>
-            </div>
-            <div class="card">
-              <h3>Governor</h3>
-              <p>Clădiri care stabilesc taxe, licențe și echilibru. Ajustează difficulty și recompense.</p>
-            </div>
-            <div class="card">
-              <h3>Guild</h3>
-              <p>Hubs de jucători, quest-uri comune, piețe locale. Coordonare și partajare de resurse.</p>
-            </div>
-            <div class="card">
-              <h3>Flux ECO</h3>
-              <p>ECO intră prin rewards și cumpărări, iese prin upgrade-uri, licențe și fuziuni de assets.</p>
-            </div>
-          </div>
+      <div id="play" class="card wide">
+        <h3>Buy ECO / Get Access</h3>
+        <p>
+          When you launch for real, you’ll add the actual links (Raydium / Jupiter / CEX).
+          For now, this button can open your “coming soon” / waitlist.
+        </p>
+        <div class="cta-row">
+          <button class="btn primary" id="buyBtnToken">Buy ECO</button>
+          <a class="btn" href="#faq">How it works</a>
+          <a class="btn ghost" href="#roadmap">Launch timeline</a>
         </div>
-        <div class="visual">
-          <div class="orb"></div>
-          <div class="frame">
-            <h3>Schema Economiei</h3>
-            <p class="meta">Commercial → produce | Governor → reglează | Guild → conectează. ECO circulă ca fuel.</p>
-          </div>
-        </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="assets">
-        <div class="bg"></div><div class="paper-top"></div><div class="paper-bottom"></div>
-        <div class="panel">
-          <h2 class="accent">Assets & Merges</h2>
-          <p>Lucrători, clădiri și unelte sunt assets. Fuziunea ridică rarity-ul (star tiers) și reduce supply-ul, creând deflație controlată.</p>
-          <div class="grid two">
-            <div class="card">
-              <h3>Lucrători & Clădiri</h3>
-              <p>Fiecare asset are producție și costuri. Sloturile sunt limitate, cresc cu upgrade.</p>
-            </div>
-            <div class="card">
-              <h3>Fuziune</h3>
-              <p>Combini 2-3 assets pentru un tier mai mare; supply scade, eficiența crește.</p>
-            </div>
-          </div>
-          <div class="chips">
-            <span class="chip">Star Tiers</span>
-            <span class="chip">Supply Reduction</span>
-            <span class="chip">Deflationary Merges</span>
-          </div>
-        </div>
-        <div class="visual">
-          <div class="orb"></div>
-          <div class="frame">
-            <h3>Deflation</h3>
-            <p class="meta">Fuziunile ard assets de tier mic pentru a crea tier superior → supply total scade în timp.</p>
-          </div>
-        </div>
-      </section>
+    <!-- ROADMAP -->
+    <section id="roadmap" class="section">
+      <div class="section-head">
+        <h2>Game Roadmap</h2>
+        <p>Build the fun first. Then scale. Then add on-chain trading.</p>
+      </div>
 
-      <section id="market">
-        <div class="bg"></div><div class="paper-top"></div><div class="paper-bottom"></div>
-        <div class="panel">
-          <h2 class="accent">Marketplace</h2>
-          <p>În-game market live acum, on-chain mai târziu. Traderii folosesc Eco Points/ECO pentru bunuri și fuziuni.</p>
-          <div class="grid two">
-            <div class="card">
-              <h3>In-Game</h3>
-              <p>Tranzacționezi resurse, unelte, lucrători. Fee-uri reinvestite în rewards.</p>
-            </div>
-            <div class="card">
-              <h3>On-Chain</h3>
-              <p>După balansare, listăm assets tokenizați și ECO pairs pentru lichiditate.</p>
-            </div>
+      <div class="roadmap">
+        <div class="rm-card">
+          <div class="rm-left">
+            <div class="rm-pill">Phase 0 • Prototype</div>
+            <div class="rm-time">Now</div>
+          </div>
+          <div class="rm-right">
+            <ul>
+              <li>Terrain + CharacterController + CameraFollow</li>
+              <li>Daily gifts + basic HUD + joystick</li>
+              <li>Core economy tick + simple resources</li>
+              <li>Stability on mobile (FPS + UI scaling)</li>
+            </ul>
           </div>
         </div>
-        <div class="visual">
-          <div class="orb"></div>
-          <div class="frame">
-            <h3>Fee Loop</h3>
-            <p class="meta">Taxele din market se convertesc în rewards și fonduri de dezvoltare.</p>
-          </div>
-        </div>
-      </section>
 
-      <section id="roadmap">
-        <div class="bg"></div><div class="paper-top"></div><div class="paper-bottom"></div>
-        <div class="panel">
-          <h2 class="accent">Roadmap</h2>
-          <div class="grid two">
-            <div class="card">
-              <h3>Phase 1</h3>
-              <div class="status ok">Live</div>
-              <p>MVP game loop, in-game market, ECO utility (in-game).</p>
-            </div>
-            <div class="card">
-              <h3>Phase 2</h3>
-              <div class="status ok">Building</div>
-              <p>Fuziuni assets, guild features, balansare economie.</p>
-            </div>
-            <div class="card">
-              <h3>Phase 3</h3>
-              <div class="status warn">Soon</div>
-              <p>On-chain token utility, tokenized assets, liquidity pairing.</p>
-            </div>
-            <div class="card">
-              <h3>Phase 4</h3>
-              <div class="status warn">Planned</div>
-              <p>Events extinse, marketplace on-chain, tool-uri de guvernanță.</p>
-            </div>
+        <div class="rm-card">
+          <div class="rm-left">
+            <div class="rm-pill">Phase 1 • Foundations</div>
+            <div class="rm-time">Q1</div>
+          </div>
+          <div class="rm-right">
+            <ul>
+              <li>Market building (buy/sell basic items)</li>
+              <li>Building placement, upgrades, slot caps</li>
+              <li>Worker assignment + basic production buildings</li>
+              <li>Inventory “bag” + save/load</li>
+            </ul>
           </div>
         </div>
-        <div class="visual">
-          <div class="orb"></div>
-          <div class="frame">
-            <h3>Capitole</h3>
-            <p class="meta">Progresează prin faze, fiecare “slide” adaugă utilitate și content nou.</p>
-          </div>
-        </div>
-      </section>
 
-      <section id="events">
-        <div class="bg"></div><div class="paper-top"></div><div class="paper-bottom"></div>
-        <div class="panel">
-          <h2 class="accent">Events</h2>
-          <p>Rotație de evenimente pentru retenție: weekly, monthly, special. Recompense în Eco Points și ECO.</p>
-          <div class="grid two">
-            <div class="card">
-              <h3>Weekly</h3>
-              <p>Quest-uri rapide, leaderboard-uri mici, boost-uri temporare.</p>
-            </div>
-            <div class="card">
-              <h3>Monthly</h3>
-              <p>Lanțuri de misiuni, economii locale și recompense progresive.</p>
-            </div>
-            <div class="card">
-              <h3>Special</h3>
-              <p>Evenimente tematice cu assets limitate și sinks dedicate.</p>
-            </div>
-            <div class="card">
-              <h3>Rewards</h3>
-              <p>Eco Points + ECO, plus sloturi de fuziune și licențe temporare.</p>
-            </div>
+        <div class="rm-card">
+          <div class="rm-left">
+            <div class="rm-pill">Phase 2 • Workers & Talents</div>
+            <div class="rm-time">Q2</div>
+          </div>
+          <div class="rm-right">
+            <ul>
+              <li>Worker types: Worker / Entrepreneur / Investor</li>
+              <li>Talent reveal system + talent tiers</li>
+              <li>Crafting loop + contracts to stabilize economy</li>
+              <li>Interior maps for buildings</li>
+            </ul>
           </div>
         </div>
-        <div class="visual">
-          <div class="orb"></div>
-          <div class="frame">
-            <h3>Pacing</h3>
-            <p class="meta">Rotim evenimentele pentru a evita inflația și pentru a menține interesul.</p>
-          </div>
-        </div>
-      </section>
 
-      <section id="faq">
-        <div class="bg"></div><div class="paper-top"></div><div class="paper-bottom"></div>
-        <div class="panel">
-          <h2 class="accent">FAQ</h2>
-          <div class="faq">
-            <div class="card"><h4>Ce este ECO?</h4><p>Tokenul de utilitate EcoSim, folosit pentru progres și, ulterior, on-chain.</p></div>
-            <div class="card"><h4>Eco Points vs ECO?</h4><p>Eco Points sunt moneda in-game; ECO este tokenul cu utilitate mai amplă.</p></div>
-            <div class="card"><h4>Marketplace on-chain când?</h4><p>După balansare și faza 3, când assets pot fi tokenizați sigur.</p></div>
-            <div class="card"><h4>Există sinks?</h4><p>Da: upgrade-uri, fuziuni de assets, licențe și taxe de market.</p></div>
-            <div class="card"><h4>Evenimente cât de des?</h4><p>Weekly, monthly, plus special events tematice.</p></div>
-            <div class="card"><h4>Guvernanță?</h4><p>Planificată în fazele avansate, odată cu utilitatea on-chain.</p></div>
+        <div class="rm-card">
+          <div class="rm-left">
+            <div class="rm-pill">Phase 3 • Merge / Stars</div>
+            <div class="rm-time">Q3</div>
+          </div>
+          <div class="rm-right">
+            <ul>
+              <li>Level 30 fusion → higher star tiers</li>
+              <li>Star matching rules (star buildings need star workers)</li>
+              <li>Supply reduction mechanics + late-game goals</li>
+              <li>Special characters / rare traits</li>
+            </ul>
           </div>
         </div>
-        <div class="visual">
-          <div class="orb"></div>
-          <div class="frame">
-            <h3>Întrebări?</h3>
-            <p class="meta">Contactează-ne pe canalele comunității pentru detalii suplimentare.</p>
-          </div>
-        </div>
-      </section>
 
-    </main>
+        <div class="rm-card highlight">
+          <div class="rm-left">
+            <div class="rm-pill">Phase 4 • Web3 (After Core)</div>
+            <div class="rm-time">Q4+</div>
+          </div>
+          <div class="rm-right">
+            <ul>
+              <li>Mint in-game assets as NFTs (optional withdrawal)</li>
+              <li>On-chain marketplace + re-import feature</li>
+              <li>Token launch (ECO) + controlled sinks</li>
+              <li>Daily checks + anti-abuse protections</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section">
+      <div class="section-head">
+        <h2>FAQ</h2>
+        <p>Short answers, no BS.</p>
+      </div>
+
+      <div class="accordion">
+        <details>
+          <summary>Is this pay-to-win?</summary>
+          <div class="ans">
+            No. The focus is economy gameplay. Tokens/NFTs are utility layers. Progress comes from building good production chains and smart trading.
+          </div>
+        </details>
+
+        <details>
+          <summary>How do merges reduce supply?</summary>
+          <div class="ans">
+            Two level-30 assets fuse into one higher-star asset. That permanently lowers the total count of assets available in the economy.
+          </div>
+        </details>
+
+        <details>
+          <summary>What makes the economy “decentralized”?</summary>
+          <div class="ans">
+            Players set prices, demand is driven by production and crafting needs, and the market has sinks to reduce inflation. On-chain trading comes after balance.
+          </div>
+        </details>
+
+        <details>
+          <summary>When will on-chain start?</summary>
+          <div class="ans">
+            After core gameplay is stable and fun on mobile. Web3 only ships when it improves the game, not when it distracts from it.
+          </div>
+        </details>
+      </div>
+
+      <footer class="footer">
+        <div>
+          <div class="footer-title">EcoSim</div>
+          <div class="footer-sub">© <span id="year"></span> • Built for mobile • Economy-first</div>
+        </div>
+        <div class="footer-links">
+          <a href="#top">Back to top</a>
+          <a href="#token">Tokenomics</a>
+          <a href="#roadmap">Roadmap</a>
+        </div>
+      </footer>
+    </section>
+  </main>
+
+  <!-- BUY MODAL -->
+  <div class="modal" id="buyModal" aria-hidden="true">
+    <div class="modal-backdrop" data-close="1"></div>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-label="Buy ECO">
+      <div class="modal-head">
+        <div class="modal-title">Buy ECO (Coming Soon)</div>
+        <button class="x" data-close="1">✕</button>
+      </div>
+      <div class="modal-body">
+        <p>
+          Add your real links when ready:
+          Raydium / Jupiter / Wallet connect / CEX.
+        </p>
+        <div class="modal-grid">
+          <a class="btn primary" href="#" onclick="return false;">Raydium (placeholder)</a>
+          <a class="btn" href="#" onclick="return false;">Jupiter (placeholder)</a>
+          <a class="btn ghost" href="#" onclick="return false;">Whitepaper (placeholder)</a>
+        </div>
+        <div class="notice small">
+          Tip: keep buy links off until token + contracts are audited.
+        </div>
+      </div>
+    </div>
   </div>
 
   <script src="app.js"></script>
